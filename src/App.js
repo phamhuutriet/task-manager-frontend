@@ -10,6 +10,10 @@ import EditTask from "./components/EditTask";
 function App() {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.task);
+  const isFetching = useSelector((state) => state.isFetching);
+  console.log("isFetching: ", isFetching);
+  console.log(tasks);
+  console.log("Re-render at App.js");
 
   useEffect(() => {
     dispatch(getTasks());

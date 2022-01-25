@@ -10,9 +10,7 @@ function EditTask() {
     title: "",
     completed: false,
   });
-  const task = useSelector((state) =>
-    state.task.find((task) => task._id == id)
-  );
+  const task = useSelector((state) => state.task.find((task) => task.id == id));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -47,7 +45,9 @@ function EditTask() {
         ) : (
           <h3>Loading</h3>
         )}
-        <Link to="/">Back to Home</Link>
+        <Link to="/" onClick={() => (window.location.href = "/")}>
+          Back to Home
+        </Link>
       </div>
     </div>
   );

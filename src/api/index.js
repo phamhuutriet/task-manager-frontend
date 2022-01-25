@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:3000/tasks";
+const url = "http://localhost:8080/tasks";
 
 export const fetchTask = () => axios.get(url);
 export const createTask = (newTask) => axios.post(url, newTask);

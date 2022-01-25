@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteTask } from "../redux/actions/actions";
+import { deleteTask, createTask } from "../redux/actions/actions";
 
 function TasksList(props) {
   const dispatch = useDispatch();
@@ -12,14 +12,16 @@ function TasksList(props) {
       <ul>
         {tasks.map((task) =>
           task.completed == false ? (
-            <li key={task._id}>
+            <li key={task.id}>
               {task.title}
-              <Link to={`/edit/${task._id}`}>Edit</Link>
-              <button onClick={() => dispatch(deleteTask(task._id))}>
+              <Link to={`/edit/${task.id}`}>Edit</Link>
+              <button onClick={() => dispatch(deleteTask(task.id))}>
                 Delete
               </button>
             </li>
-          ) : null
+          ) : (
+            dispatch(deleteTask(task.id))
+          )
         )}
       </ul>
     </div>

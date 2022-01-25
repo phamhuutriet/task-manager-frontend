@@ -7,12 +7,12 @@ export default (tasks = [], action) => {
     case CREATE:
       return [...tasks, action.payload];
     case UPDATE:
-      tasks = [...tasks];
+      console.log(tasks);
       return tasks.map((task) =>
-        task._id == action.id ? action.payload : task
+        task.id === action.id ? action.payload : task
       );
     case DELETE:
-      return tasks.filter((task) => task._id != action.payload.id);
+      return tasks.filter((task) => task.id != action.payload.id);
     default:
       return tasks;
   }
